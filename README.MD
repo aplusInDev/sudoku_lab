@@ -112,13 +112,17 @@ This project implements an intelligent Sudoku solver using various artificial in
 ```txt
 sudoku_lab/
 ├── data/
+│   ├── __init__.py
 │   └── default_grids.py
 ├── models/
+│   ├── __init__.py
 │   ├── node.py
 │   └── problem.py
 ├── solvers/
+│   ├── __init__.py
 │   └── sudoku_solver.py
 ├── ui/
+│   ├── __init__.py
 │   └── sudoku_app.py
 └── main.py
 ```
