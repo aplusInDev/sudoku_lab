@@ -4,22 +4,53 @@
 
 - [Description](#description)
 - [Features](#features)
+- [Technical Requirements](#technical-requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [How It Works](#how-it-works)
+- [Algorithm Details](#algorithm-details)
+- [Performance Analysis](#performance analysis)
+- [Project Structure](#project-structure)
 - [Example](#example)
 - [Contributing](#contributing)
 
 ## Description
 
-This project is a Sudoku solver developed in Python that utilizes artificial intelligence search algorithms to solve puzzles. The program features a graphical user interface (GUI) that allows users to choose the solving algorithm from Depth-First Search (DFS), Breadth-First Search (BFS), and Depth-Limited Search (DLS). For each solving attempt, the execution time of the selected algorithm is displayed, enabling comparison of algorithm efficiency.
+This project implements an intelligent Sudoku solver using various artificial intelligence search algorithms. Built with Python, it features a graphical user interface (GUI) that allows users to experiment with different solving strategies including Depth-First Search (DFS), Breadth-First Search (BFS), and Depth-Limited Search (DLS). The solver not only finds solutions but also provides detailed performance metrics, making it an excellent tool for both solving Sudoku puzzles and comparing algorithm efficiency.
 
 ## Features
 
-- **Multiple Solving Algorithms**: Choose from DFS, BFS, DLS, and A* Search.
-- **Execution Time Display**: Compare the efficiency of different algorithms.
-- **User-Friendly GUI**: Input the initial state of the Sudoku grid and view the solution.
-- **Expandable**: Potential to handle larger n×n Sudoku grids.
+- **Multiple Solving Algorithms**:
+  - Depth-First Search (DFS) for memory-efficient solving
+  - Breadth-First Search (BFS) for optimal solutions
+  - Depth-Limited Search (DLS) for controlled exploration
+
+- **Advanced Performance Analysis**:
+  - Real-time execution time measurement
+  - Memory usage tracking
+  - Node expansion statistics
+  - Solution path analysis
+
+- **User-Friendly Interface**:
+  - Intuitive puzzle input system
+  - Real-time validation of entries
+  - Visual solution playback
+  - Algorithm comparison dashboard
+
+- **Extensible Architecture**:
+  - Support for custom puzzle sizes (n×n)
+  - Pluggable algorithm interface
+  - Modular design for easy extensions
+
+## Technical Requirements
+
+- Python 3.8 or higher
+- Required Python packages:
+
+  ```bash
+  tkinter>=8.6
+  numpy>=1.19.0
+  pytest>=6.0.0 (for testing)
+  ```
 
 ## Installation
 
@@ -32,31 +63,77 @@ This project is a Sudoku solver developed in Python that utilizes artificial int
 
 ## Usage
 
-1. **Run the application**:
+1. **Launch the application**:
 
     ```bash
     python main.py
     ```
 
-2. **Input the Sudoku puzzle**:
-    - Click on "Load Default" button to load a default puzzle.
+2. **Input Puzzle**:
+    - Enter numbers manually in the grid
+    - Use "Load Default" for sample puzzles
+    - Import custom puzzles from files
 
-3. **Select the solving algorithm**:
-    - Choose from DFS, BFS, DLS, or A* Search.
+3. **Configure Solver**:
+    - Select algorithm from dropdown menu
+    - Adjust algorithm parameters (if applicable)
+    - Set execution time limits (optional)
 
-4. **Solve the puzzle**:
-    - Click the "Solve" button to start the solving process.
-    - The solution will be displayed in the GUI.
-    - The execution analysis for the used algorithm will displayed in the terminal.
+4. **Execute and Analyze**:
+    - Click "Solve" to start processing
+    - View solution progression
+    - Examine performance metrics
+    - Export results (optional)
 
-## How It Works
+## Algorithm Details
 
-The project includes the following key components:
+### Depth-First Search (DFS)
 
-- **Node Class**: Encapsulates a state, its parent state, the list of child states, and the action that led to this state.
-- **Problem Class**: Formulates the Sudoku problem, defining the initial state, goal state, transition model, goal test function, and cost calculation function.
-- **SudokuSolver Class**: Implements the DFS, BFS, DLS, and A* Search algorithms to solve the Sudoku puzzle. It also calculates and displays the execution time for each algorithm.
-- **SudokuApp Class**: Provides a user-friendly GUI for inputting the Sudoku puzzle, selecting the solving algorithm, and displaying the solution.
+- **Strategy**: Explores as far as possible along each branch before backtracking
+- **Memory Usage**: O(bm) where b is branching factor and m is maximum depth
+- **Completeness**: Complete for finite state spaces
+- **Time Complexity**: O(b^m) in worst case
+
+### Breadth-First Search (BFS)
+
+- **Strategy**: Explores all nodes at present depth before moving to next level
+- **Memory Usage**: O(b^d) where d is solution depth
+- **Completeness**: Complete and optimal for unweighted paths
+- **Time Complexity**: O(b^d)
+
+### Depth-Limited Search (DLS)
+
+- **Strategy**: DFS with depth cutoff
+- **Memory Usage**: O(bl) where l is depth limit
+- **Completeness**: Complete up to depth limit
+- **Time Complexity**: O(b^l)
+
+## Project Structure
+
+```txt
+sudoku_lab/
+├── src/
+│   ├── algorithms/
+│   │   ├── dfs.py
+│   │   ├── bfs.py
+│   │   └── dls.py
+│   ├── gui/
+│   │   ├── main_window.py
+│   │   └── grid_display.py
+│   ├── models/
+│   │   ├── sudoku_board.py
+│   │   └── node.py
+│   └── utils/
+│       ├── validator.py
+│       └── performance.py
+├── tests/
+│   ├── test_algorithms.py
+│   └── test_validator.py
+├── examples/
+│   └── puzzles/
+├── main.py
+└── requirements.txt
+```
 
 ## Example
 
@@ -96,4 +173,30 @@ Here is an example of a Sudoku puzzle and its solution:
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request with your changes. Ensure your code follows the project's coding standards and includes appropriate tests.
+1. Fork the repository
+2. Create a feature branch:
+
+    ```bash
+    git checkout -b feature/new-feature
+    ```
+
+3. Commit changes:
+
+    ```bash
+    git commit -m 'Add new feature'
+    ```
+
+4. Push to branch:
+
+    ```bash
+    git push origin feature/new-feature
+    ```
+
+5. Submit a Pull Request
+
+### Contribution Guidelines
+
+- Follow PEP 8 style guide
+- Add unit tests for new features
+- Update documentation
+- Maintain test coverage above 80%
