@@ -1,8 +1,7 @@
 import time
 from typing import List, Optional
 from collections import deque
-from models.node import Node
-from models.problem import Problem
+from models import Node, Problem
 
 class SudokuSolver:
     """Sudoku puzzle solver using various search algorithms."""

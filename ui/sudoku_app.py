@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from typing import List
-from models.problem import Problem
-from solvers.sudoku_solver import SudokuSolver
+from models import Problem
+from solvers import SudokuSolver
 
 class SudokuApp:
     def __init__(self, default_grid: List[List[int]], method: str = "DFS"):

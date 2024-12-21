@@ -8,7 +8,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Algorithm Details](#algorithm-details)
-- [Performance Analysis](#performance analysis)
 - [Project Structure](#project-structure)
 - [Example](#example)
 - [Contributing](#contributing)
@@ -112,27 +111,16 @@ This project implements an intelligent Sudoku solver using various artificial in
 
 ```txt
 sudoku_lab/
-├── src/
-│   ├── algorithms/
-│   │   ├── dfs.py
-│   │   ├── bfs.py
-│   │   └── dls.py
-│   ├── gui/
-│   │   ├── main_window.py
-│   │   └── grid_display.py
-│   ├── models/
-│   │   ├── sudoku_board.py
-│   │   └── node.py
-│   └── utils/
-│       ├── validator.py
-│       └── performance.py
-├── tests/
-│   ├── test_algorithms.py
-│   └── test_validator.py
-├── examples/
-│   └── puzzles/
-├── main.py
-└── requirements.txt
+├── data/
+│   └── default_grids.py
+├── models/
+│   ├── node.py
+│   └── problem.py
+├── solvers/
+│   └── sudoku_solver.py
+├── ui/
+│   └── sudoku_app.py
+└── main.py
 ```
 
 ## Example
