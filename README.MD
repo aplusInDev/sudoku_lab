@@ -48,7 +48,6 @@ This project implements an intelligent Sudoku solver using various artificial in
   ```bash
   tkinter>=8.6
   numpy>=1.19.0
-  pytest>=6.0.0 (for testing)
   ```
 
 ## Installation
